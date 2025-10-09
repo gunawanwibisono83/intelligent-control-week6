@@ -1,0 +1,28 @@
+Nama : Gunawan Wibisono
+NPM  : 224308083
+Kelas: TKA-7D
+
+Analisis Sementara
+
+Analisis :
+1. Seberapa baik deteksi jalur dengan Instance Segmentation dibandingkan Canny?
+   Berdasarkan hasil praktikum, metode Instance Segmentation dengan model YOLOv8 belum bisa dibandingkan metode Canny Edge Detection karena memiliki hasil yang berbeda. Pada kode program ini YOLOv8 hanya memahami area objek secara kontekstual. Sebaliknya, metode Canny hanya menyoroti batas tepi berdasarkan perbedaan intensitas piksel sehingga hasilnya cenderung penuh noise, terutama pada area dengan pencahayaan tidak merata atau tekstur kompleks. 
+2. Apakah kombinasi kedua metode dapat meningkatkan akurasi?
+   Ketika kedua metode dikombinasikan, hasil visual menjadi lebih jelas karena tepi dari Canny mempertegas batas area hasil segmentasi YOLO, namun secara kuantitatif kombinasi tersebut tidak memberikan peningkatan akurasi yang signifikan terhadap atau kesesuaian mask. 
+3. Apa dampak perubahan parameter Canny (thresholds) terhadap hasil deteksi?
+   Perubahan nilai threshold pada Canny juga memiliki dampak besar terhadap hasil deteksi: threshold rendah menghasilkan banyak tepi namun meningkatkan noise, sedangkan threshold tinggi menghasilkan deteksi yang lebih bersih tetapi dapat menghilangkan sebagian garis rel. Dengan demikian, pemilihan parameter Canny perlu disesuaikan dengan kondisi pencahayaan dan kualitas citra agar hasil deteksi optimal.
+
+Diskusi:
+1. Kapan lebih baik menggunakan Canny Edge Detection dibanding Instance Segmentation?
+   Metode Canny Edge Detection lebih baik digunakan pada kondisi di mana diperlukan deteksi cepat terhadap struktur garis atau batas objek, seperti pada tahap prapemrosesan citra untuk menandai bentuk rel tanpa memerlukan model pembelajaran yang kompleks. Sementara itu, Instance Segmentation lebih unggul untuk mengenali dan mengklasifikasi area objek secara spesifik, terutama bila sistem membutuhkan pemahaman konteks seperti posisi rel terhadap lingkungan sekitar.
+2. Bagaimana cara meningkatkan deteksi jalur dengan tuning parameter YOLOv8-seg?
+   Akurasi deteksi jalur dengan YOLOv8-seg dapat ditingkatkan melalui tuning parameter seperti ukuran input gambar (imgsz), jumlah epochs, serta proses fine-tuning model menggunakan dataset rel kereta yang lebih spesifik agar bobot jaringan dapat menyesuaikan karakteristik visual rel.
+3. Bagaimana metode ini dapat diterapkan dalam sistem navigasi kereta otomatis?
+   Dalam konteks sistem navigasi kereta otomatis, kombinasi kedua metode ini dapat diterapkan untuk meningkatkan keandalan sistem persepsi visual: YOLOv8 dapat mengenali jalur utama dan objek penghalang, sedangkan Canny dapat membantu mempertegas batas rel untuk memastikan posisi dan arah laju kereta terdeteksi dengan presisi tinggi.
+
+
+
+
+
+
+
